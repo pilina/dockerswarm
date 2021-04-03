@@ -17,7 +17,7 @@ services:
           - node.platform.os == linux
 
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer-ce
     command: -H tcp://tasks.agent:9001 --tlsskipverify
     volumes:
       - portainer-data:/data
@@ -28,7 +28,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.labels.portainer.portainer-data == true
       labels:
         - traefik.enable=true
         - traefik.docker.network=traefik-public
